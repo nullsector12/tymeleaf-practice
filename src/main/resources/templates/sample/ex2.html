@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<style>
+    .target {
+        background-color: red;
+    }
+</style>
+<body>
+    <ul>
+        <li th:each="dto, state : ${list}" >
+            <span th:if="${dto.seq % 5 == 0}" th:text="${'---------------------------'+dto.seq}"></span>
+            <span th:unless="${dto.seq % 5 == 0}" th:text="${dto.first}"></span>
+        </li>
+        <li th:each="dto, state : ${list}" th:text="${dto.seq % 5 == 0 } ? ${dto.seq}: ${dto.first}">
+        </li>
+        <li th:each="dto, state : ${list}" th:class="${dto.seq % 5 == 0 } ? 'target'" th:text="${dto}">
+        </li>
+    </ul>
+</body>
+</html>
